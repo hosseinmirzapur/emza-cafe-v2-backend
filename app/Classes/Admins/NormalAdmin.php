@@ -13,4 +13,14 @@ class NormalAdmin extends Admin
         $this->setAttribute('type', 'NORMAL');
         parent::__construct($attributes);
     }
+
+    /**
+     * @param string[] $abilities
+     * @return string
+     */
+    public function newToken(array $abilities = ['*']): string
+    {
+        $this->tokens()->delete();
+        return $this->createToken('normalAdmin', $abilities)->plainTextToken;
+    }
 }

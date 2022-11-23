@@ -22,4 +22,12 @@ class Admin extends Model
     {
         return $this->belongsTo(Branch::class, 'branch_id');
     }
+
+    /**
+     * @return BelongsTo
+     */
+    public function role(): BelongsTo
+    {
+        return $this->belongsTo(Role::class, 'role_id');
+    }
 }
