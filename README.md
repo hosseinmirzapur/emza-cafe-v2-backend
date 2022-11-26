@@ -1,3 +1,6 @@
 ## **Cafe Emza V2 Backend**
 <hr />
-<p>Something great is going to be created here!</p>
+<p>
+Admin, Branch, Category, Permission, Product, Role, Sentence, Size, Tag
+</p>
+<b>Models and Migrations Covered...</b>
