@@ -3,17 +3,18 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class ResetPasswordRequest extends FormRequest
+class SuperAdminLoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,8 @@ class ResetPasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'email' => ['required', 'email', Rule::exists('admins', 'email')],
+            'password' => 'required'
         ];
     }
 }

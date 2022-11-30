@@ -22,7 +22,7 @@ class LoginService
     {
         $data = filterData($request->validated());
         $admin = $this->findAdmin($data['email'], $data['password']);
-        $token = $admin->newToken()->plainTextToken;
+        $token = $admin->newToken();
         return [
             'token' => $token,
             'admin' => $admin
@@ -41,6 +41,6 @@ class LoginService
         if (!Hash::check($password, $admin->getAttribute('password'))) {
             throw new CustomException('کاربری با اطلاعات وارد شده یافت نشد');
         }
-        return $admin;
+        return $admin->load(['role', 'role.permissions']);
     }
 }

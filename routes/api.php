@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\SuperAdminController;
 use Illuminate\Support\Facades\Route;
 
 // ACL
 Route::prefix('/admin')->group(function () {
     Route::post('/login', [AdminController::class, 'login']);
-    Route::post('/reset-password', [AdminController::class, 'resetPassword']);
 });
+
+// SuperAdmin
+Route::post('/super-admin/login', [SuperAdminController::class, 'login']);
+
